@@ -1,8 +1,10 @@
 <div class="container">
-  <app-server-control></app-server-control>
+  <!--Custom output event handling-->
+  <app-server-control (serverCreated)='onServerAdded($event)' (bpCrated)='onBlueprintAdded($event)'></app-server-control>
   <div class="row">
     <div class="col-xs-12">
-      <app-server-list></app-server-list>
+      <app-server-list *ngFor="let item of serverList" [server]='item'></app-server-list>
+      <!--Custom input property binding, passing the serverList down via *ngFor into the element property that is defined on app-server-list and exposed with @Input-->
     </div>
   </div>
 </div>
