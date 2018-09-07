@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-hooks',
   templateUrl: './hooks.component.html',
   styleUrls: ['./hooks.component.css']
 })
-export class HooksComponent implements OnInit {
+export class HooksComponent implements OnInit,OnChanges {
       data :string[] = [
             'Midoria',
             'Ochaco',
@@ -16,6 +16,9 @@ export class HooksComponent implements OnInit {
         console.log('Constructor called');
  }
 
+ngOnChanges(){
+      console.log('On changes called');
+}
   ngOnInit() {
         console.log('ngOnInit called');
   }
