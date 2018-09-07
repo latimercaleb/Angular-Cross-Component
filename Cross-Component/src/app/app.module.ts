@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ServerControlComponent } from './server-control/server-control.component';
 import { ServerListComponent } from './server-list/server-list.component';
+import { HooksComponent } from './hooks/hooks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ServerControlComponent,
-    ServerListComponent
+    ServerListComponent,
+    HooksComponent
   ],
   imports: [
     BrowserModule,

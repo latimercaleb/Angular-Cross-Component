@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild,ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-server-control',
@@ -7,8 +7,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class ServerControlComponent implements OnInit {
   serverElements = [];
-  newServerName = '';
-  newServerContent = '';
+  @ViewChild('serverContentRef') serverContent :ElementRef;
+  // newServerName = '';
+  // newServerContent = '';
   // These new properties are events, that send values outside, they require the @Output and to emit the data
   // Just like inputs, outputs can have aliases as well
   @Output() serverCreated = new EventEmitter<{name: string, content: string}>();
@@ -18,13 +19,13 @@ export class ServerControlComponent implements OnInit {
   onAddServer(nameref: string, contentRef: string){
     this.serverCreated.emit({
       name: nameref,
-      content: contentRef
+      content: this.serverContent.nativeElement.value
     });
   }
   onAddBlueprint(nameref: string, contentRef: string){
     this.blueprintCreated.emit({
       name: nameref,
-      content: contentRef
+      content: this.serverContent.nativeElement.value
     });
    }
   }

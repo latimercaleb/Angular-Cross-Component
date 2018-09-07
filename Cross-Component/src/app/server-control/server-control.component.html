@@ -11,6 +11,7 @@
 
     <label>Server Content</label>
     <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent"> -->
+    <!-- This utilizes the ref as a @ViewChild, ViewChild can allow the reference to be fully passed to the component and utilized as a js-value rather than an html element, depending on use, this may be a better way of fetching from the dom-->
     <input type='text' class='form-control' #serverContentRef/>
 
     <br>

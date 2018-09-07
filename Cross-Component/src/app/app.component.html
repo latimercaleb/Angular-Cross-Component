@@ -3,8 +3,18 @@
   <app-server-control (serverCreated)='onServerAdded($event)' (bpCrated)='onBlueprintAdded($event)'></app-server-control>
   <div class="row">
     <div class="col-xs-12">
-      <app-server-list *ngFor="let item of serverList" [server]='item'></app-server-list>
+      <app-server-list *ngFor="let item of serverList" [server]='item'>
+            <p>
+              <strong *ngIf="item.type === 'server'" style="color: red">{{ item.content }}</strong>
+              <em *ngIf="item.type === 'blueprint'">{{ item.content }}</em>
+            </p>
+      </app-server-list>
       <!--Custom input property binding, passing the serverList down via *ngFor into the element property that is defined on app-server-list and exposed with @Input-->
     </div>
+  </div>
+  <div class='row'>
+        <div class='col-xs-12'>
+             <app-hooks></app-hooks>
+        </div>
   </div>
 </div>
