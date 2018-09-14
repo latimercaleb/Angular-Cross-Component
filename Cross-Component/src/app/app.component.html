@@ -7,14 +7,10 @@
             <p>
               <strong *ngIf="item.type === 'server'" style="color: red">{{ item.content }}</strong>
               <em *ngIf="item.type === 'blueprint'">{{ item.content }}</em>
+              <button class='btn btn-danger' style="float:right;" (click)="deleteItem()">Delete</button>
             </p>
       </app-server-list>
       <!--Custom input property binding, passing the serverList down via *ngFor into the element property that is defined on app-server-list and exposed with @Input-->
     </div>
-  </div>
-  <div class='row'>
-        <div class='col-xs-12'>
-             <app-hooks></app-hooks>
-        </div>
   </div>
 </div>
