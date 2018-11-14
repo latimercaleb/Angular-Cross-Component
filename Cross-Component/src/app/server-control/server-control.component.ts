@@ -7,6 +7,7 @@ import { Component, OnInit, EventEmitter, Output, ViewChild,ElementRef } from '@
 })
 export class ServerControlComponent implements OnInit {
   serverElements = [];
+  // Viewchild requires the selector of the element as an arguement, and is different from a typical refference in a binding scenario because it is bound via the ts variable not the template itself
   @ViewChild('serverContentRef') serverContent :ElementRef;
   // newServerName = '';
   // newServerContent = '';

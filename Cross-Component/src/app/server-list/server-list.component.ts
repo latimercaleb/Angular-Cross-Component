@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges,DoCheck,AfterContentInit,AfterContentChecked,AfterViewInit,AfterViewChecked,OnDestroy} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges,DoCheck,AfterContentInit,AfterContentChecked,AfterViewInit,AfterViewChecked,OnDestroy,ViewChild,ElementRef, ContentChild} from '@angular/core';
 @Component({
   selector: 'app-server-list',
   templateUrl: './server-list.component.html',
@@ -8,6 +8,8 @@ export class ServerListComponent implements OnInit,OnChanges, DoCheck,AfterConte
   // The @Input decorator is required for exposing the property to global code, component members are natively private unless purposefully exposed
   // The value in the () is an alias for how it is addressed outside of this component. Now element cannot be used outside
   @Input('server') element: {type: string, name: string, content: string};
+  @ViewChild('heading') header: ElementRef;
+  @ContentChild('contentParagraph') content :ElementRef;
   constructor() {
         // Constructor comes in before ngOnit
         console.log('Constructed')
@@ -19,7 +21,11 @@ export class ServerListComponent implements OnInit,OnChanges, DoCheck,AfterConte
  }
 
   ngOnInit() {
-         console.log('initialized')
+         console.log('initialized');
+         // At this point the viewchild has no data, because we can't access the template. The DOM hasn't rendered yet
+         console.log(this.header.nativeElement.textContent)
+          console.log('another initialized');
+         console.log(this.content.nativeElement.textContent)
   }
 
   ngDoCheck(){
@@ -27,12 +33,16 @@ export class ServerListComponent implements OnInit,OnChanges, DoCheck,AfterConte
  }
 ngAfterContentInit(){
       console.log('post-content');
+      // Content being passed by reference from another typsscript component is loaded in a different hook
+      console.log(this.content.nativeElement.textContent)
 }
 ngAfterContentChecked(){
       console.log('post-contentChecked')
 }
 ngAfterViewInit(){
       console.log('View init')
+      // At this point the template has access to the template
+      console.log(this.header.nativeElement.textContent)
 }
 ngAfterViewChecked(){
       console.log('View checked')

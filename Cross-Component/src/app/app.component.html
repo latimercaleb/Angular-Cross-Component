@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-xs-12">
       <app-server-list *ngFor="let item of serverList" [server]='item'>
-            <p>
+            <p #contentParagraph>
               <strong *ngIf="item.type === 'server'" style="color: red">{{ item.content }}</strong>
               <em *ngIf="item.type === 'blueprint'">{{ item.content }}</em>
               <button class='btn btn-danger' style="float:right;" (click)="deleteItem()">Delete</button>
